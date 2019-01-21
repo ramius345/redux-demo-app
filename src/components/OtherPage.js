@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
 
 class OtherPage extends Component {
     render () {
+	let entries = this.props.list.map( x => <li>{x}</li> );
         return (
 	    <div>
               <div>
@@ -22,12 +23,18 @@ class OtherPage extends Component {
 	      <div>
 		This is the Other Page.
 	      </div>
+	      <ul>
+		{entries}
+	      </ul>
 	    </div>
         );
     }
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+    list: state.listReducer.list
+});
+
 const mapDispatchToProps = (dispatch) => {
     return {
 	goToOtherPage: () => {
